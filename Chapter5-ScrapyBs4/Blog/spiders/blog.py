@@ -1,6 +1,7 @@
 '''
 Listing Blog for first 50 or less
 from 'https://blog.scrapinghub.com/tag/web-scraping'
+
 '''
 import scrapy
 from Blog.items import BlogItem
@@ -11,7 +12,7 @@ class BlogSpider(scrapy.Spider):
     allowed_domains = ["blog.scrapinghub.com"]
     start_urls = ('http://blog.scrapinghub.com/tag/web-scraping',) #Main Page
     '''
-    To be used for pagination purpose
+    To be used for pagination purpose.
     
     start_urls = (
         'http://blog.scrapinghub.com/tag/web-scraping',
@@ -26,7 +27,8 @@ class BlogSpider(scrapy.Spider):
     def parse(self, response):
         print("Response Type >>> ", type(response))
         rows = response.xpath("//div[@class='post-listing']//div[@class='post-item']")
-
+        
+        print("count >> ", rows.__len__())
         for row in rows:
             item = BlogItem()
 
@@ -45,12 +47,12 @@ class BlogSpider(scrapy.Spider):
             print("Next Page URL: ",nextPage)
             # nextPage obtained from either XPath or CSS can be used.
             yield scrapy.Request(nextPage,callback=self.parse)
-
+        
         print('Completed')
 
     '''Using CSS Selectors'''
     '''
-    def parseCSS(self, response):
+    def parse(self, response):
         print("Response Type >>> ", type(response))
         rows = response.css(".post-item")
 
