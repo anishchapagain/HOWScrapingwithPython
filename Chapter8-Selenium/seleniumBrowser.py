@@ -17,7 +17,7 @@ print("Cookies obtained from python.org")
 print(cookies)
 
 print(driver.page_source)
-print(driver.refresh())
+driver.refresh()
 
 driver.get('https://www.google.com')
 print("Title: ",driver.title)
