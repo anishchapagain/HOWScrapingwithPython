@@ -52,7 +52,7 @@ def get_details(page, dataWriter):
             nextPage = True
             pageNo += 1
         else:
-            print("Blogs Not Listed!")
+            print("Quotes Not Listed!")
 
 
 
