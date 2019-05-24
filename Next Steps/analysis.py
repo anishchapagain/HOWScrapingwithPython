@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 dataSet = pd.read_csv('bookdetails.csv')
-'''
+
 print(type(dataSet))
 print(dataSet)
 print(dataSet.describe())
